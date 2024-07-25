@@ -5,11 +5,13 @@ These instructions are for my own reference so are more notes rather than a how-
 This hack requires a Raspberry Pi, [OpenOCD](https://openocd.org/) and a bit of soldering.
 
 The first step is to take apart the _ST-LINK V2_ clone and see what's inside:
+
 [![USB Dongle without its Cover](cover-off-with-labels-600x800.jpg)](cover-off-with-labels-3000x4000.jpg)
 
 They're all different but this particular model has an [STM32F103C8](stm32f103c8.pdf) - officially 64KiB but actually 128KiB (just be sure to verify the images after flashing !)  I've traced the pins to the SWD header (labelled in the image above).
 
 The next step is to attach some flying wires to the `SWDCLK` and `SWDIO` pins.  Power and ground will need to be supplied by the USB port.  Ensure that the Raspberry Pi is also powered by the same port / PC so that there are no potential differences that could interfere with (or damage) the devices, _including (and especially) the very expensive laptop..._
+
 [![The USB Dongle, Ready for Re-flashing](ready-for-reflashing-600x800.jpg)](ready-for-reflashing-3000x4000.jpg)
 
 The image above includes a HAT I made that allows me to program a variety of PICs using the Raspberry Pi.  The only relevant part for this process is that I have added a new two-pin header (pins `14` and `15`) purely for the purposes of re-flashing the ST-LINK clone.
@@ -38,7 +40,6 @@ adapter driver bcm2835gpio
 # bcm2835gpio_peripheral_base 0x20000000
 # Raspi2 and Raspi3 peripheral_base address
 bcm2835gpio_peripheral_base 0x3F000000
-
 
 # Raspi1 BCM2835: (700Mhz)
 # bcm2835gpio_speed_coeffs 113714 28
