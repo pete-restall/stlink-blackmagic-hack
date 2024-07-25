@@ -1,0 +1,7 @@
+* text eol=lf
+* text eol=lf
+*.bin binary
+*.elf binary
+*.jpg binary
+*.pdf binary
+*.xcf binary
